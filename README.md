@@ -1,4 +1,6 @@
-# Tallessa – Effortless Asset Management (API backend)
+# Tallessa – Effortless Asset Management
+
+## REST API
 
 ## Requirements
 
