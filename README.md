@@ -9,6 +9,21 @@
 
 ## Getting started
 
+This assumes it's OK to create and access databases in PostgreSQL as your own user.
+
+    python3 -m venv venv-tallessa
+    source venv-tallessa/bin/activate
+    pip install -U pip setuptools wheel
+
+    git clone git@github.com:tallessa/tallessa-backend
+    cd tallessa-backend
+    pip install -r requirements.txt
+
+    createdb -E UTF-8 tallessa
+    DEBUG=true python manage.py setup
+
+    DEBUG=true python manage.py runserver
+
 ## Coding conventions
 
 Coding conventions are enforced via `isort` and `flake8`. We deviate from PEP-8 in the following points:
