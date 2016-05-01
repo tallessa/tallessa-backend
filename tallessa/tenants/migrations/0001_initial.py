@@ -21,8 +21,6 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('slug', models.SlugField(unique=True)),
                 ('name', models.CharField(max_length=255)),
-                ('admin_group', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='as_admin_group_for_tenants', to='auth.Group')),
-                ('user_group', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='as_user_group_for_tenants', to='auth.Group')),
             ],
         ),
     ]
