@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 
 from .models import Tenant
 from .serializers import CreateTenantSerializer, TenantSerializer
@@ -13,3 +13,11 @@ class TenantViewSet(viewsets.ModelViewSet):
             return CreateTenantSerializer
         else:
             return TenantSerializer
+
+
+class CurrentTenantView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Tenant.objects.all()
+    serializer_class = TenantSerializer
+
+    def get_object(self):
+        return self.request.tenant

@@ -8,7 +8,7 @@ class Item(models.Model):
 
     name = models.CharField(max_length=255)
     # model = models.ForeignKey('tallessa_stuff.Model')
-    serial_number = models.CharField(max_length=255)
+    serial_number = models.CharField(max_length=255, blank=True)
 
     home_location = models.ForeignKey(
         'tallessa_stuff.Location',
@@ -30,3 +30,6 @@ class Item(models.Model):
         verbose_name_plural = _('stuff')
         unique_together = [('tenant', 'slug')]
         index_together = [('tenant', 'serial_number')]
+
+    def __str__(self):
+        return self.slug

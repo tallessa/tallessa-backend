@@ -30,6 +30,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
+    'tallessa_backend',
     'tallessa.tenants',
     'tallessa.stuff',
 ]
@@ -43,6 +44,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'tallessa.tenants.middleware.TenantMiddleware',
 ]
 
 TEMPLATES = [
@@ -60,6 +62,58 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'console':{
+            'level': 'DEBUG' if DEBUG else 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'celery': {
+            'handlers': ['console'],
+            'level': 'DEBUG' if DEBUG else 'INFO',
+            'propagate': True
+        },
+        'tallessa': {
+            'handlers': ['console'],
+            'level': 'DEBUG' if DEBUG else 'INFO',
+            'propagate': True
+        },
+        'requests': {
+            'handlers': ['console'],
+            'level': 'DEBUG' if DEBUG else 'INFO',
+            'propagate': True
+        },
+    }
+}
 
 ALLOWED_HOSTS = ['*']
 LANGUAGE_CODE = 'fi'
@@ -81,6 +135,15 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
 }
+
+TALLESSA_DEFAULT_TENANT_SLUG = env.str(
+    'TALLESSA_DEFAULT_TENANT_SLUG',
+    default=('hukassa' if DEBUG else None),
+)
+TALLESSA_HOSTNAME_SUFFIX = env.str(
+    'TALLESSA_HOSTNAME_SUFFIX',
+    default='tallessa.eu',
+)
 
 
 vars().update(env.email_url(

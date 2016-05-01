@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
-from .models import Tenant
+from ..models import Tenant
 
 
-class CreateTenantSerializer(serializers.ModelSerializer):
+class CreateTenantSerializer(serializers.HyperlinkedModelSerializer):
     """
     A TenantSerializer that allows the setting of `slug`.
     """
@@ -13,7 +13,7 @@ class CreateTenantSerializer(serializers.ModelSerializer):
         fields = ['slug', 'name']
 
 
-class TenantSerializer(serializers.ModelSerializer):
+class TenantSerializer(serializers.HyperlinkedModelSerializer):
     slug = serializers.SlugField(read_only=True)
 
     class Meta:
