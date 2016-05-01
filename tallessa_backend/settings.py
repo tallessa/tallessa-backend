@@ -14,8 +14,8 @@ SECRET_KEY = env.str('SECRET_KEY', default=('' if not DEBUG else 'xxx'))
 
 DATABASES = {
     'default': env.db_url(
-        default='psql://localhost/tallessa'
-    )
+        default='psql://localhost/tallessa',
+    ),
 }
 
 CACHES = {'default': env.cache_url(default='locmemcache://')}
@@ -27,6 +27,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+
     'tallessa.tenants',
     'tallessa.stuff',
 ]
@@ -71,7 +74,15 @@ USE_L10N = True
 USE_TZ = True
 WSGI_APPLICATION = 'tallessa_backend.wsgi.application'
 
+# TODO
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
+}
+
 
 vars().update(env.email_url(
-    default=('consolemail://' if DEBUG else 'smtp://localhost:25')
+    default=('consolemail://' if DEBUG else 'smtp://localhost:25'),
 ))

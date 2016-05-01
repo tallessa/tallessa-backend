@@ -9,6 +9,13 @@
 
 ## Getting started
 
+## Coding conventions
+
+Coding conventions are enforced via `isort` and `flake8`. We deviate from PEP-8 in the following points:
+
+* Maximum line length is 120 Unicode characters
+* Trailing commas are used in multi-line lists, dicts and function invocations
+
 ## License
 
     Tallessa – Effortless Asset Management (API backend)

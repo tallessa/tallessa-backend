@@ -14,13 +14,13 @@ class Item(models.Model):
         'tallessa_stuff.Location',
         blank=True,
         null=True,
-        related_name='as_current_location_for_items'
+        related_name='as_current_location_for_items',
     )
 
     current_location = models.ForeignKey(
         'tallessa_stuff.Location',
         blank=True,
-        null=True
+        null=True,
     )
 
     parent = models.ForeignKey('self', blank=True, null=True, related_name='contents')
