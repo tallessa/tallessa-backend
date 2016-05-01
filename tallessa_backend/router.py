@@ -1,7 +1,8 @@
 from rest_framework import routers
 
-from .views import TenantViewSet
+from tallessa.tenants.views import TenantViewSet
 
-router = routers.SimpleRouter()
+
+router = routers.DefaultRouter()
 router.register(r'tenants', TenantViewSet)
 urlpatterns = router.urls
