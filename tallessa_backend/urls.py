@@ -15,7 +15,7 @@ router.register(r'locations', LocationViewSet, base_name='locations')
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^v1/', include(router.urls, namespace='v1')),
-    url(r'^v1/tenant', CurrentTenantView.as_view(), name='current-tenant'),
-    url(r'^$', RedirectView.as_view(url='/v1')),
+    url(r'^api/v1/', include(router.urls, namespace='v1')),
+    url(r'^api/v1/tenant', CurrentTenantView.as_view(), name='current-tenant'),
+    url(r'^$', RedirectView.as_view(url='/api/v1')),
 ]
