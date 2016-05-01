@@ -1,6 +1,6 @@
 # Tallessa – Effortless Asset Management
 
-![Travis CI: tallessa/tallessa-backend](https://travis-ci.org/tallessa/tallessa-backend.svg?branch=master)
+[![Build Status](https://travis-ci.org/tallessa/tallessa-backend.svg?branch=master)](https://travis-ci.org/tallessa/tallessa-backend)
 
 ## REST API
 
