@@ -3,7 +3,7 @@ import logging
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.management import call_command
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 
 from tallessa.utils import log_get_or_create
 

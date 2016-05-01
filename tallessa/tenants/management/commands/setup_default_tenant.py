@@ -1,9 +1,10 @@
 import logging
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
+
+from tallessa.utils import log_get_or_create
 
 from ...models import Tenant
-from tallessa.utils import log_get_or_create
 
 
 logger = logging.getLogger(__name__)

@@ -68,27 +68,27 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s',
         },
         'simple': {
-            'format': '%(levelname)s %(message)s'
+            'format': '%(levelname)s %(message)s',
         },
     },
     'filters': {
         'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
     },
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
+            'class': 'django.utils.log.AdminEmailHandler',
         },
-        'console':{
+        'console': {
             'level': 'DEBUG' if DEBUG else 'INFO',
             'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
+            'formatter': 'verbose',
         },
     },
     'loggers': {
@@ -100,19 +100,19 @@ LOGGING = {
         'celery': {
             'handlers': ['console'],
             'level': 'DEBUG' if DEBUG else 'INFO',
-            'propagate': True
+            'propagate': True,
         },
         'tallessa': {
             'handlers': ['console'],
             'level': 'DEBUG' if DEBUG else 'INFO',
-            'propagate': True
+            'propagate': True,
         },
         'requests': {
             'handlers': ['console'],
             'level': 'DEBUG' if DEBUG else 'INFO',
-            'propagate': True
+            'propagate': True,
         },
-    }
+    },
 }
 
 ALLOWED_HOSTS = ['*']
