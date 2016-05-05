@@ -10,15 +10,15 @@ class Item(models.Model):
     # model = models.ForeignKey('tallessa_stuff.Model')
     serial_number = models.CharField(max_length=255, blank=True)
 
-    home_location = models.ForeignKey(
-        'tallessa_stuff.Location',
+    home_place = models.ForeignKey(
+        'tallessa_stuff.Place',
         blank=True,
         null=True,
-        related_name='as_current_location_for_items',
+        related_name='as_current_place_for_items',
     )
 
-    current_location = models.ForeignKey(
-        'tallessa_stuff.Location',
+    current_place = models.ForeignKey(
+        'tallessa_stuff.Place',
         blank=True,
         null=True,
     )

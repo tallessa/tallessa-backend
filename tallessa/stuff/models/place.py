@@ -1,8 +1,8 @@
 from django.db import models
 
 
-class Location(models.Model):
-    team = models.ForeignKey('tallessa_teams.Team', related_name='locations')
+class Place(models.Model):
+    team = models.ForeignKey('tallessa_teams.Team', related_name='places')
     slug = models.SlugField()
     name = models.CharField(max_length=255)
 

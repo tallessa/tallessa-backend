@@ -3,8 +3,8 @@ from rest_framework import viewsets
 from tallessa.teams.filters import TeamFilterBackend
 from tallessa.teams.mixins import SetTeamOnCreate
 
-from .models import Item, Location
-from .serializers import CreateItemSerializer, CreateLocationSerializer, ItemSerializer, LocationSerializer
+from .models import Item, Place
+from .serializers import CreateItemSerializer, CreatePlaceSerializer, ItemSerializer, PlaceSerializer
 
 
 class StuffViewSet(SetTeamOnCreate, viewsets.ModelViewSet):
@@ -19,13 +19,13 @@ class StuffViewSet(SetTeamOnCreate, viewsets.ModelViewSet):
             return ItemSerializer
 
 
-class LocationViewSet(SetTeamOnCreate, viewsets.ModelViewSet):
+class PlaceViewSet(SetTeamOnCreate, viewsets.ModelViewSet):
     lookup_field = 'slug'
-    queryset = Location.objects.all()
+    queryset = Place.objects.all()
     filter_backends = (TeamFilterBackend,)
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
-            return CreateLocationSerializer
+            return CreatePlaceSerializer
         else:
-            return LocationSerializer
+            return PlaceSerializer

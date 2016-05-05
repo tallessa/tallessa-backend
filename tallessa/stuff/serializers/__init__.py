@@ -1,10 +1,10 @@
 from .item import CreateItemSerializer, ItemSerializer
-from .location import CreateLocationSerializer, LocationSerializer
+from .place import CreatePlaceSerializer, PlaceSerializer
 
 
 __all__ = [
     'CreateItemSerializer',
     'ItemSerializer',
-    'CreateLocationSerializer',
-    'LocationSerializer',
+    'CreatePlaceSerializer',
+    'PlaceSerializer',
 ]
