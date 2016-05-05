@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Item(models.Model):
-    tenant = models.ForeignKey('tallessa_tenants.Tenant', related_name='stuff')
+    team = models.ForeignKey('tallessa_teams.Team', related_name='stuff')
     slug = models.SlugField()
 
     name = models.CharField(max_length=255)
@@ -28,8 +28,8 @@ class Item(models.Model):
     class Meta:
         verbose_name = _('item')
         verbose_name_plural = _('stuff')
-        unique_together = [('tenant', 'slug')]
-        index_together = [('tenant', 'serial_number')]
+        unique_together = [('team', 'slug')]
+        index_together = [('team', 'serial_number')]
 
     def __str__(self):
         return self.slug

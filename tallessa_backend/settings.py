@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'tallessa_backend',
-    'tallessa.tenants',
+    'tallessa.teams',
     'tallessa.stuff',
 ]
 
@@ -44,7 +44,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'tallessa.tenants.middleware.TenantMiddleware',
+    'tallessa.teams.middleware.TeamMiddleware',
 ]
 
 TEMPLATES = [
@@ -136,8 +136,8 @@ REST_FRAMEWORK = {
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
 }
 
-TALLESSA_DEFAULT_TENANT_SLUG = env.str(
-    'TALLESSA_DEFAULT_TENANT_SLUG',
+TALLESSA_DEFAULT_TEAM_SLUG = env.str(
+    'TALLESSA_DEFAULT_TEAM_SLUG',
     default=('hukassa' if DEBUG else None),
 )
 TALLESSA_HOSTNAME_SUFFIX = env.str(

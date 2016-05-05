@@ -4,13 +4,13 @@ from .models import Item, Location
 
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ('tenant', 'slug', 'name')
-    list_filter = ('tenant',)
+    list_display = ('team', 'slug', 'name')
+    list_filter = ('team',)
 
 
 class LocationAdmin(admin.ModelAdmin):
-    list_display = ('tenant', 'slug', 'name')
-    list_filter = ('tenant',)
+    list_display = ('team', 'slug', 'name')
+    list_filter = ('team',)
 
 
 admin.site.register(Item, ItemAdmin)

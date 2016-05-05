@@ -4,16 +4,16 @@ from django.conf import settings
 from django.db import models
 
 
-class Tenant(models.Model):
+class Team(models.Model):
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=255)
-    hostname = models.CharField(max_length=511)
+    hostname = models.CharField(max_length=511, unique=True)
 
-    # admin_group = models.ForeignKey('auth.Group', related_name='as_admin_group_for_tenants')
-    # user_group = models.ForeignKey('auth.Group', related_name='as_user_group_for_tenants')
+    # admin_group = models.ForeignKey('auth.Group', related_name='as_admin_group_for_teams')
+    # user_group = models.ForeignKey('auth.Group', related_name='as_user_group_for_teams')
 
     @property
-    def tenant(self):
+    def team(self):
         return self
 
     def __str__(self):
@@ -26,4 +26,4 @@ class Tenant(models.Model):
                 hostname_suffix=settings.TALLESSA_HOSTNAME_SUFFIX,
             )
 
-        return super(Tenant, self).save(*args, **kwargs)
+        return super(Team, self).save(*args, **kwargs)

@@ -20,7 +20,7 @@ class Command(BaseCommand):
         ]
 
         if settings.DEBUG:
-            management_commands.append((('setup_default_tenant',), dict()))
+            management_commands.append((('setup_default_team',), dict()))
 
         for pargs, opts in management_commands:
             logger.info("** Running: %s", pargs[0])

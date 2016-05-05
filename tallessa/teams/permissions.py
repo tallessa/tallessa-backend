@@ -1,21 +1,21 @@
 from rest_framework import permissions
 
 
-class TenantPermission(permissions.BasePermission):
-    message = 'Tenant does not match'
+class TeamPermission(permissions.BasePermission):
+    message = 'Team does not match'
 
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS and getattr(obj, 'is_public', False):
             return True
 
-        return obj.tenant == request.tenant
+        return obj.team == request.team
 
 
-class TenantUserPermission(permissions.BasePermission):
-    message = 'Tenant user permission required'
+class TeamUserPermission(permissions.BasePermission):
+    message = 'Team user permission required'
 
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS and getattr(obj, 'is_public', False):
             return True
 
-        return request.user.groups.filter(pk__in=[obj.tenant.admin_group, obj.tenant.user_group]).exists()
+        return request.user.groups.filter(pk__in=[obj.team.admin_group, obj.team.user_group]).exists()
