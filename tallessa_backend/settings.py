@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'tallessa_backend',
     'tallessa.teams',
     'tallessa.stuff',
+    'tallessa.users',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -136,6 +137,7 @@ REST_FRAMEWORK = {
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
 }
 
+TALLESSA_INSTALLATION_SLUG = env.str('TALLESSA_INSTALLATION_SLUG', default='tallessa')
 TALLESSA_DEFAULT_TEAM_SLUG = env.str(
     'TALLESSA_DEFAULT_TEAM_SLUG',
     default=('hukassa' if DEBUG else None),
