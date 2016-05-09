@@ -15,7 +15,7 @@ logger = logging.getLogger('tallessa')
 class Command(BaseCommand):
     def handle(self, *args, **options):
         management_commands = [
-            (('collectstatic',), dict(interactive=False)),
+            # (('collectstatic',), dict(interactive=False)),
             (('migrate',), dict()),
         ]
 
