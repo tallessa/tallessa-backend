@@ -1,20 +1,20 @@
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
+from django.shortcuts import get_object_or_404
 
 from .models import Team
 
 
 def determine_team(request):
     hostname = request.META.get('HTTP_HOST')
-    team = Team.objects.filter(hostname=hostname).first()
+    if getattr(settings, 'TALLESSA_DEFAULT_TEAM_SLUG'):
+        try:
+            return Team.objects.get(hostname=hostname)
+        except Team.DoesNotExist:
+            return get_object_or_404(Team, slug=settings.TALLESSA_DEFAULT_TEAM_SLUG)
+    else:
+        return get_object_or_404(Team, hostname=hostname)
 
-    if team is None:
-        if hasattr(settings, 'TALLESSA_DEFAULT_TEAM_SLUG'):
-            return Team.objects.get(slug=settings.TALLESSA_DEFAULT_TEAM_SLUG)
-        else:
-            raise ImproperlyConfigured('Team not found for hostname: {}'.format(hostname))
-
-    return team
 
 
 class TeamMiddleware(object):
