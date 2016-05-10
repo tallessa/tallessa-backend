@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.core.exceptions import ImproperlyConfigured
 from django.shortcuts import get_object_or_404
 
 from .models import Team
@@ -14,7 +13,6 @@ def determine_team(request):
             return get_object_or_404(Team, slug=settings.TALLESSA_DEFAULT_TEAM_SLUG)
     else:
         return get_object_or_404(Team, hostname=hostname)
-
 
 
 class TeamMiddleware(object):
