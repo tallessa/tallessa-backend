@@ -8,7 +8,7 @@ from tallessa.teams.views import CurrentTeamView, TeamViewSet
 from tallessa.users.views import CurrentUserView, UserViewSet
 
 
-router = routers.DefaultRouter()
+router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'teams', TeamViewSet)
 router.register(r'stuff', StuffViewSet, base_name='stuff')
 router.register(r'places', PlaceViewSet, base_name='places')
