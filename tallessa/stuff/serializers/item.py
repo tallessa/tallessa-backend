@@ -10,7 +10,7 @@ class CreateItemSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Item
-        fields = ['slug', 'name']
+        fields = ['slug', 'name', 'serial_number']
 
 
 class ItemSerializer(serializers.HyperlinkedModelSerializer):
@@ -18,4 +18,4 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Item
-        fields = ['slug', 'name']
+        fields = ['slug', 'name', 'serial_number']
