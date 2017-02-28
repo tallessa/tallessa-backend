@@ -14,7 +14,7 @@ SECRET_KEY = env.str('SECRET_KEY', default=('' if not DEBUG else 'xxx'))
 
 DATABASES = {
     'default': env.db_url(
-        default='psql:///tallessa',
+        default='psql://tallessa:tallessa@postgres/tallessa',
     ),
 }
 

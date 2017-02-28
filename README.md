@@ -4,12 +4,24 @@
 
 ## REST API
 
-## Requirements
-
-* Python 3.x (tested: Python 3.5)
-* PostgreSQL 9.x (tested: PostgreSQL 9.5)
-
 ## Getting started
+
+### The Docker Compose Way
+
+There is a single unified Docker Compose development environment for both `tallessa-backend` (this repository) and [tallessa-frontend](https://github.com/tallessa/tallessa-backend).
+
+First make sure you have both this repository and [tallessa-frontend](https://github.com/tallessa/tallessa-frontend) checked out under the same parent directory. Then, in the working copy of this repository, run
+
+    docker-compose up
+
+Backend will start at http://localhost:8000 and frontend dev server will start at http://localhost:8080. A default team called `hukassa` will be created along with a superuser `mahti` with password `mahti`.
+
+### The Traditional Way
+
+Requirements:
+
+* Python 3.x (tested: Python 3.6)
+* PostgreSQL 9.x (tested: PostgreSQL 9.5)
 
 This assumes it's OK to create and access databases in PostgreSQL as your own user.
 
@@ -36,7 +48,7 @@ Coding conventions are enforced via `isort` and `flake8`. We deviate from PEP-8 
 ## License
 
     Tallessa – Effortless Asset Management (API backend)
-    Copyright © 2016 Santtu Pajukanta
+    Copyright © 2016–2017 Santtu Pajukanta
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by
