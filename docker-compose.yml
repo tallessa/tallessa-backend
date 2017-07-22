@@ -1,28 +1,32 @@
-version: '2'
+version: '2.2'
 services:
   backend:
     build: .
+    init: true
     command: scripts/wait-for-it.sh postgres:5432 -- python manage.py docker_start
     ports:
       - 8000:8000
     links:
       - postgres
     volumes:
-      - .:/usr/src/app
+      - ./tallessa:/usr/src/app/tallessa
     environment:
+      PYTHONUNBUFFERED: 1
       DEBUG: 1
   frontend:
     build: ../tallessa-frontend
+    init: true
     ports:
-      - 8080:8080
+      - 3000:3000
     links:
       - backend
     volumes:
-      - ../tallessa-frontend:/usr/src/app
+      - ../tallessa-frontend/src:/usr/src/app/src
     environment:
       TALLESSA_BACKEND_URL: http://backend:8000
   postgres:
     image: postgres
+    init: true
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
